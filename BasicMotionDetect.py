@@ -26,8 +26,11 @@ while cap.isOpened():
         if cv2.contourArea(contour) < 3000:
             continue
 
-        print("x,y:", x,",", y , ",", x+w, ",", y+h)
+        print("left x, down y, right x, up y :", x,",", y , ",", x+w, ",", y+h)
         cv2.rectangle(frame1, (x, y), (x+w, y+h), (0,255,0), 2)
+        centerx = x+((x+w)-x)//2
+        centery= y+((y+h)-y)//2
+        print("Center Coordinates x,y:", centerx, centery)
         statustext = 'Active'
         cv2.putText(frame1, "Status: {}".format(statustext), (10,20), cv2.FONT_HERSHEY_SIMPLEX,
          1, (0, 0, 255), 3)
