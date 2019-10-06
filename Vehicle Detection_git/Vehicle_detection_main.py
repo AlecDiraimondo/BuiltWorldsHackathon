@@ -3,7 +3,7 @@ import numpy as np
 import time
 import vehicles
 
-cap=cv2.VideoCapture("dummy.mp4")
+cap=cv2.VideoCapture("Video1.mp4")
 fgbg=cv2.createBackgroundSubtractorMOG2(detectShadows=False,history=200,varThreshold = 90)
 kernalOp = np.ones((3,3),np.uint8)
 kernalOp2 = np.ones((5,5),np.uint8)
@@ -23,7 +23,8 @@ up_limit=100
 down_limit=int(4.5*(500/5))
 
 while(cap.isOpened()):
-    ret,frame=cap.read()
+    ret,frame1=cap.read()
+    ret,frame2=cap.read()
 
     try:
         frame=cv2.resize(frame,(900,500))
@@ -44,7 +45,7 @@ while(cap.isOpened()):
         for cnt in countours0:
             area=cv2.contourArea(cnt)
             #print(area)
-            if area>300:
+            if area>3000:
 
                 m=cv2.moments(cnt)
                 cx=int(m['m10']/m['m00'])
