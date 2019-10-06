@@ -10,6 +10,8 @@ init_time = 0
 status = False # machine not moving
 centers_x = []
 centers_y = []
+fontThickness = 2
+position = (10,20)
 
 
 while cap.isOpened():
@@ -41,10 +43,10 @@ while cap.isOpened():
         centers_x.append(centerx)
         centers_y.append(centery)
         statustext = 'Active'
-        cv2.putText(frame1, "Status: {}".format(statustext), (10,20), cv2.FONT_HERSHEY_SIMPLEX,
-         1, (0, 0, 255), 2)
-    cv2.putText(frame1, "Timer: {}".format(int(timer)), (10,50), cv2.FONT_HERSHEY_SIMPLEX,
-         1, (250, 250, 500), 2 )
+        cv2.putText(frame1, "Status: {}".format(statustext), position , cv2.FONT_HERSHEY_SIMPLEX,
+         0.60, (0, 0, 255), fontThickness)
+    cv2.putText(frame1, "Active Time: {}".format(int(timer)), (10,50), cv2.FONT_HERSHEY_SIMPLEX,
+         0.60, (250, 250, 500), fontThickness )
 
     cv2.imshow("feed",frame1)
     frame1 = frame2
